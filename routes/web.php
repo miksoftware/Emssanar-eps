@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\EmssanarCredentialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/users', [UserController::class, 'store'])->name('users.store');
         Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
         Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+        // Configuración URL API
+        Route::get('/emssanar/config', [EmssanarCredentialController::class, 'index'])->name('emssanar.credentials');
+        Route::post('/emssanar/config/save', [EmssanarCredentialController::class, 'save'])->name('emssanar.credentials.save');
+        Route::post('/emssanar/config/test', [EmssanarCredentialController::class, 'test'])->name('emssanar.credentials.test');
+        Route::post('/emssanar/config/reset', [EmssanarCredentialController::class, 'reset'])->name('emssanar.credentials.reset');
     });
 });

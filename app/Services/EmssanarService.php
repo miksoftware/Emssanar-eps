@@ -97,7 +97,7 @@ class EmssanarService
 
         if (empty($fechaApi)) {
             return ['error' => 'Fecha de nacimiento inválida: ' . $fechaNacimiento];
-        }        $apiUrl = config('emssanar.api_url');
+        }        $apiUrl = session('emssanar_api_url', config('emssanar.api_url'));
         $baseUrl = preg_replace('#/api/.*$#', '', $apiUrl);
 
         $payload = [

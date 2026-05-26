@@ -184,6 +184,14 @@
             @if(auth()->user()->isAdmin())
                 <a href="/files" class="{{ request()->is('files') ? 'active' : '' }}">📁 Archivos</a>
                 <a href="/users" class="{{ request()->is('users') ? 'active' : '' }}">👥 Usuarios</a>
+                <a href="{{ route('emssanar.credentials') }}" class="{{ request()->routeIs('emssanar.*') ? 'active' : '' }}" style="display:inline-flex;align-items:center;gap:6px;">
+                    🔗 API
+                    @if(session()->has('emssanar_api_url'))
+                        <span style="width:8px;height:8px;border-radius:50%;background:#69f0ae;display:inline-block;" title="URL personalizada activa"></span>
+                    @else
+                        <span style="width:8px;height:8px;border-radius:50%;background:#9999bb;display:inline-block;" title="Usando URL por defecto"></span>
+                    @endif
+                </a>
             @endif
         </div>
         <div class="nav-right">
